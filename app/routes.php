@@ -20,3 +20,5 @@ Route::get('login', ['as'=>'login.get','uses'=>'UsersController@getLogin']);
 Route::post('login', ['as'=>'login.post','uses'=>'UsersController@postLogin']);
 Route::get('dashboard', ['as'=>'dashboard', 'uses'=>'DashboardController@getIndex']);
 Route::resource('users','UsersController');
+
+Route::resource('tasks', 'TaskController');

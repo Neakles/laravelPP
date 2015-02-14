@@ -11,10 +11,17 @@ gulp.task("script", function(){
         .pipe(gulp.dest('public/js'));
 });
 
+// Task Untuk Stylesheet
+gulp.task("sass", function(){
+    gulp.src('assets/scss/main.scss')
+        .pipe(sass({style: 'compressed'}))
+        .pipe(gulp.dest('public/css'));
+});
 // Watcher
 gulp.task('watch', function(){
     gulp.watch('assets/js/**/*.js', ['script']);
+    gulp.watch('assets/scss/**/*.scss', ['sass']);
 });
 
 // Task Default
-gulp.task("default", ['script','watch']);
+gulp.task("default", ['script','sass','watch']);

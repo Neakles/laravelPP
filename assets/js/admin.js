@@ -1,30 +1,20 @@
 //= include '../../bower_components/angular/angular.min.js'
+//= include '../../bower_components/angular-aria/angular-aria.min.js'
+//= include '../../bower_components/angular-animate/angular-animate.min.js'
+//= include '../../bower_components/ngFx/dist/ngFx.min.js'
+//= include '../../bower_components/angular-material/angular-material.min.js'
+
 (function(){
     'use strict';
 
-    // Syntax untuk setter module Angular
     angular
-        .module('PPApp', []);
-
-    angular
-        .module('PPApp')
-        .controller('TodoController', TodoController);
-
-    TodoController.$inject = ['$scope'];
-    function TodoController($scope){
-        $scope.todos = [
-            {id:1, title:'Belajar Laravel'},
-            {id:2, title:'Belajar Angular'}
-        ];
-        $scope.addTodo = function(){
-            $scope.todos.push({
-                id:3,
-                title: $scope.newTodoName
-            });
-            $scope.newTodoName = '';
-        }
-        $scope.deleteTodo = function(index){
-            $scope.todos.splice(index, 1);
-        }
-    }
+        .module('PPApp', ['ngMaterial','ngFx'])
+        .value('baseUrl', 'http://localhost:8000/')
+        .config(['$mdThemingProvider', function($mdThemingProvider) {
+          $mdThemingProvider.theme('default')
+            .primaryPalette('teal')
+            .accentPalette('cyan');
+        }]);
 })();
+
+//= include 'controllers/TaskController.js'
